@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de tareas</title>
+</head>
+<body>
+    <h1>Lista de tareas (HTML generado por el servidor)</h1>
+
+    <ul th:if="${#lists.isEmpty(tareas)} == false">
+        <li th:each="t : ${tareas}">
+            <s th:if="${t.hecha()}" th:text="${t.titulo()}"></s>
+           
+            <span th:unless="${t.hecha()}" th:text="${t.titulo()}">Titulo</span>
+              <form th:action="@{/tareas/{id}/hecha(id=${t.id()})}" method="post">
+                <button type="submit">Hecha</button>
+            </form> 
+        </li>
+    </ul>   
+    <p th:text="${#lists.size(tareas)}"></p>
+    <p th:unless="${#lists.isEmpty(tareas)} == false">Aún no hay tareas. ¡Añade una!</p>
+
+    <form th:action="@{/tareas}" method="post">
+        <label for="inputTarea">Escribe una tarea mangurrian</label>
+        <input type="text" name="titulo" placeholder="Nueva tarea" id="inputTarea" required>
+        <button type="submit">Añadir</button>
+    </form>
+</body>
+</html>

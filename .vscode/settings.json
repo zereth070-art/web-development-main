@@ -1,0 +1,179 @@
+{
+    // ==========================================
+    // Z10n BIOS v2.0
+    // Visual Studio Code Configuration
+    // ==========================================
+
+    // ---------- APPEARANCE ----------
+
+    "workbench.colorTheme": "Tokyo Night",
+    "workbench.iconTheme": "material-icon-theme",
+
+    "window.title": "${activeEditorShort}${separator}${rootName} — Z10n BIOS v2.0",
+
+    "workbench.editor.showTabs": "multiple",
+    "workbench.editor.tabSizing": "shrink",
+
+    "explorer.compactFolders": false,
+    "breadcrumbs.enabled": false,
+
+
+    // ---------- EDITOR ----------
+
+    "editor.fontFamily": "'JetBrains Mono', monospace",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.lineHeight": 1.5,
+
+    "editor.cursorStyle": "line",
+    "editor.cursorWidth": 2,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on",
+
+    "editor.minimap.enabled": false,
+
+    "editor.renderWhitespace": "selection",
+    "editor.guides.bracketPairs": true,
+
+    "editor.bracketPairColorization.enabled": true,
+
+    "editor.smoothScrolling": true,
+
+    "editor.scrollBeyondLastLine": false,
+
+    "editor.stickyScroll.enabled": true,
+
+    "editor.formatOnSave": true,
+
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+
+
+    // ---------- LANGUAGES ----------
+
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+
+    "[javascriptreact]": {
+        "editor.tabSize": 2
+    },
+
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+
+
+    // ---------- FILES ----------
+
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+
+
+    // ---------- TERMINAL ----------
+
+    "terminal.integrated.fontFamily": "'JetBrains Mono', monospace",
+    "terminal.integrated.fontSize": 13,
+
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorBlinking": true,
+
+    "terminal.integrated.smoothScrolling": true,
+
+    "terminal.integrated.scrollback": 5000,
+
+
+    // ---------- EXPLORER ----------
+
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
+
+    // ---------- SEARCH ----------
+
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/build": true,
+        "**/.git": true
+    },
+
+
+    // ---------- GIT ----------
+
+    "git.autofetch": true,
+    "git.confirmSync": false,
+
+    "git.enableSmartCommit": false,
+
+    "git.decorations.enabled": "all",
+
+    // ---------- JAVASCRIPT / TYPESCRIPT ----------
+
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+
+    "javascript.suggest.autoImports": true,
+    "typescript.suggest.autoImports": true,
+
+
+    // ---------- HTML ----------
+
+    "html.format.enable": true,
+    "html.autoClosingTags": true,
+
+
+    // ---------- CSS ----------
+
+    "css.validate": true,
+    "scss.validate": true,
+
+
+    // ---------- JSON ----------
+
+    "json.format.enable": true,
+
+
+    // ---------- NPM ----------
+
+    "npm.packageManager": "npm",
+
+
+    // ---------- WINDOW ----------
+
+    "window.commandCenter": true,
+    "window.restoreWindows": "all",
+
+    "window.menuBarVisibility": "classic",
+
+
+    // ---------- STARTUP ----------
+
+    "workbench.startupEditor": "none",
+
+
+    // ---------- NOTIFICATIONS ----------
+
+    "workbench.enableExperiments": false,
+
+
+    // ---------- ACCESSIBILITY ----------
+
+    "editor.accessibilitySupport": "auto"
+}

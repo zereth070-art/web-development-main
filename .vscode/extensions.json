@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    "christian-kohler.path-intellisense",
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "mongodb.mongodb-vscode",
+    "oderwat.indent-rainbow",
+    "PKief.material-icon-theme",
+    "rangav.vscode-thunder-client",
+    "ritwickdey.LiveServer",
+    "tonybaloney.vscode-pets",
+    "usernamehw.errorlens",
+    "vmware.vscode-spring-boot",
+    "vscjava.vscode-java-pack",
+    "yzhang.markdown-all-in-one",
+    "zhuangtongfa.material-theme"
+  ]
+}
