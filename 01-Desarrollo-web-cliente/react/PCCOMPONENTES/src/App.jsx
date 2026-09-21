@@ -1,122 +1,50 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [form, setForm] = useState({
+        nombre: "",
+        email: "",
+        password: "",
+        repetir: "",
+    });
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    const campos = [
+        { nombre: "nombre", type: "text", label: "Nombre de usuario:", placeholder: "Nombre*" },
+        { nombre: "email", type: "email", label: "Email:", placeholder: "Email*" },
+        { nombre: "password", type: "password", label: "Password:", placeholder: "Password*" },
+        { nombre: "repetir", type: "password", label: "Repetir password:", placeholder: "Repetir contraseña*" },
+    ];
 
-      <div className="ticks"></div>
+    function changeCampo(ev) {
+        const { nombre } = ev.target.dataset;
+        console.log("evento change del input:", nombre, ev.target.value);
+        setForm({ ...form, [nombre]: ev.target.value });
+    }
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    return (
+        <>
+            <h1>Vamos a comprobar lo que es el STATE de un componente de REACT</h1>
+            <div className="m-4">
+                {campos.map((campo) => (
+                    <div key={campo.nombre}>
+                        <label className="form-label" htmlFor={campo.nombre}>
+                            {campo.label}
+                        </label>
+                        <input
+                            type={campo.type}
+                            id={campo.nombre}
+                            className="form-control"
+                            placeholder={campo.placeholder}
+                            data-nombre={campo.nombre}
+                            value={form[campo.nombre]}
+                            onChange={changeCampo}
+                        />
+                    </div>
+                ))}
+            </div>
+        </>
+    );
 }
 
-export default App
+export default App;
