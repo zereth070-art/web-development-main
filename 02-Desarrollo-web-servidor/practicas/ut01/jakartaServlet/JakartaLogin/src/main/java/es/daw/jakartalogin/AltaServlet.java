@@ -33,7 +33,7 @@ public class AltaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    request.setAttribute("");
+    request.setAttribute("nombre", request.getParameter("nombre"));
 
     }
 
