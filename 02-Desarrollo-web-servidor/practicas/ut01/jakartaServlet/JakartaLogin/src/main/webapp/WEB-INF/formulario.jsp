@@ -30,8 +30,16 @@
 
       <label for="tecnologia">Tecnología con la que más te gustaría trabajar</label>
       <select id="tecnologia" name="tecnologia">
-
-            <option value=" "> </option>
+       <%
+            List<String> tecnologias = (List<String>) request.getAttribute("tecnologias");
+            if (tecnologias != null) {
+                for (String t : tecnologias) {
+       %>
+            <option value="<%= t %>"><%= t %></option>
+       <%
+                }
+            }
+       %>
       </select>
 
       <label for="nivel">Tu nivel actual</label>

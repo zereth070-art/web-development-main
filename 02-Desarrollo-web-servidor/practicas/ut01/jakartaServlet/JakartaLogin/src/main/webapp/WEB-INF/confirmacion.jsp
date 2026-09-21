@@ -22,12 +22,12 @@
     <h1>¡Te has dado de alta correctamente, ${nombre}!</h1>
 
     <dl>
-      <dt>Email</dt><dd></dd>
-      <dt>Tecnología</dt><dd></dd>
-      <dt>Nivel</dt><dd></dd>
+      <dt>Email</dt><dd>${email}</dd>
+      <dt>Tecnología</dt><dd>${tecnologia}</dd>
+      <dt>Nivel</dt><dd>${nivel}</dd>
     </dl>
 
     <a href="index.html">&larr; Volver al inicio</a>
   </div>
 </body>
-</html> 
+</html>
