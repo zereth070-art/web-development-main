@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -42,7 +43,7 @@
   <div class="card">
     <h1>¿Quieres darte de alta en la aplicación?</h1>
     <p>Regístrate en unos segundos y cuéntanos qué tecnología te interesa más.</p>
-    <a class="boton" href="alta">Darme de alta</a>
+    <a class="boton" href="${pageContext.request.contextPath}/alta">Darme de alta</a>
   </div>
 </body>
 </html>

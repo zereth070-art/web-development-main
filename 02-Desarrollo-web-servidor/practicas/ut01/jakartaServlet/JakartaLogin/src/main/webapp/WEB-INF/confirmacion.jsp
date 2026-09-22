@@ -27,7 +27,7 @@
       <dt>Nivel</dt><dd>${nivel}</dd>
     </dl>
 
-    <a href="index.html">&larr; Volver al inicio</a>
+    <a href="index.jsp">&larr; Volver al inicio</a>
   </div>
 </body>
 </html>
