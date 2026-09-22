@@ -1,0 +1,117 @@
+/* ==============================================================
+   index.css — estilos globales del proyecto-apuntes
+   (una "norma CSS" = selector { clave: valor; clave: valor })
+   Lección 04 lo compara con un objeto de JavaScript.
+   ============================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+.app {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.titulo-app {
+  font-size: 1.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.subtitulo-app {
+  color: #94a3b8;
+  margin-top: 0;
+}
+
+.indice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.indice a {
+  color: #93c5fd;
+  text-decoration: none;
+  border: 1px solid #334155;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.indice a:hover {
+  background: #1e293b;
+}
+
+.tarjeta {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tarjeta h2 {
+  margin-top: 0;
+  color: #f8fafc;
+}
+
+.tarjeta h3 {
+  color: #cbd5e1;
+  margin-bottom: 0.25rem;
+}
+
+.tarjeta p {
+  margin: 0.25rem 0;
+}
+
+.codigo {
+  background: #0b1120;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 0.75rem 0;
+}
+
+.bien {
+  color: #4ade80;
+}
+
+.mal {
+  color: #f87171;
+}
+
+.resultado {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px dashed #475569;
+  border-radius: 0.5rem;
+  background: #0b1120;
+}
+
+button.caja {
+  border: 1px solid #475569;
+  background: #334155;
+  color: #f8fafc;
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+button.caja:hover {
+  background: #475569;
+}
