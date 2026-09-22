@@ -9,8 +9,10 @@ target/
 .idea/
 /data/
 
-# Tomcat (deploy local de IntelliJ)
-11-Recursos/apache-tomcat-11.0.26/webapps/demo_war/
+# Tomcat (se descarga aparte: https://tomcat.apache.org/)
+apache-tomcat-*/
+11-Recursos/apache-tomcat-11.0.26/
 
 # Node
 node_modules/
+dist/
