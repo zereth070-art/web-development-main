@@ -22,7 +22,7 @@ total = base + importe
 #Ticket esperado
 
 # ========== TICKET DE COMPRA ==========
-printf("========== TICKET DE COMPRA ==========")
+printf(f"========== TICKET DE COMPRA ==========")
 #Cliente: Laura
 prinf(f"Cliente:{cliente}")
 #Producto: Teclado
@@ -37,3 +37,7 @@ prinf(f"Subtotal:{subtotal:.2f} €")
 prinf(f"Descuento:{descuento:.2f} €")
 #Importe del IVA
 prinf(f"Importe del IVA:{importe_IVA:.2f} €")
+#Importe del IVA
+prinf(f"Total:{total:.2f} €")
+printf(f"Gracias por su compra")
+printf(f"=====================================")
