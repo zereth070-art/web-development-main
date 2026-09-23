@@ -34,4 +34,4 @@ prinf(f"Cantidad:{cantidad}")
 #Subtotal
 prinf(f"Subtotal:{subtotal:.2f} €")
 #Descuento
-prinf(f"Subtotal:{descuento:.2f} €")
+prinf(f"Descuento:{descuento:.2f} €")
