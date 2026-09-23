@@ -35,3 +35,5 @@ prinf(f"Cantidad:{cantidad}")
 prinf(f"Subtotal:{subtotal:.2f} €")
 #Descuento
 prinf(f"Descuento:{descuento:.2f} €")
+#Importe del IVA
+prinf(f"Importe del IVA:{importe_IVA:.2f} €")
