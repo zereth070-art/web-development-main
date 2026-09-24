@@ -1,0 +1,40 @@
+# Auto detect text files and normalize line endings
+* text=auto
+
+# Java sources
+*.java text diff=java
+*.jsp text
+*.xml text
+*.html text
+*.css text
+*.js text
+*.txt text
+*.md text
+
+# Maven
+pom.xml text
+mvnw text eol=lf
+.mvn/wrapper/maven-wrapper.properties text
+
+# Windows scripts keep CRLF
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binary files
+*.jar binary
+*.war binary
+*.class binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# IDE (suelle estar en .gitignore, por si acaso)
+*.iml binary
+.idea/** merge=ours
