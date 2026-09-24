@@ -1,0 +1,16 @@
+h1 {
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-align: center;
+}
+
+.form-container {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* Bootstrap ya estiliza .form-label y .form-control; aquí solo se añade
+   la negrita y el margen superior que Bootstrap no aplica. */
+.form-label {
+  font-weight: bold;
+  margin-top: 14px;
+}
