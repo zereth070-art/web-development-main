@@ -456,8 +456,8 @@ export default NombreComponente         // lo hace reutilizable
 3. Las **props** son los datos que el padre pasa al hijo (solo lectura).
 4. `export default` hace el componente **reutilizable/importable** en otros ficheros.
 
-### Conexión con PomodoroZion
+###
 
-El "renderTasks" y el repintado manual con `innerHTML` eran justo lo que React
-automatiza con el diffing: tú declaras cómo debe verse la UI según el estado y
-React aplica solo los cambios. Mismo concepto, sin "pintar a mano".
+Cada vez que el navegador intenta hacer una peticion al servidor en react, react lo para y carga un componente con esa url en su lugar.
+
+

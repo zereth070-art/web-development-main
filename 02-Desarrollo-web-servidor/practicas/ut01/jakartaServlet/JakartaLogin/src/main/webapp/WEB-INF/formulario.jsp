@@ -15,10 +15,8 @@
   button { margin-top: 24px; background: #E8432A; color: #fff; border: none; padding: 12px 28px;
            border-radius: 8px; font-weight: bold; cursor: pointer; }
   button:hover { background: #c93a22; }
-  error {
-  background: #4JU3A8, color:32D13Q, border: 1px solid #E86IUR;
-  border-radius: 5px #BLABLA
-  }
+  .error-msg { background: #FDE8E8; color: #A00; border: 1px solid #E86IUR;
+               border-radius: 6px; padding: 10px 14px; margin-top: 16px; font-weight: bold; }
 </style>
 </head>
 <body>
