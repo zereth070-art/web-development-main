@@ -25,11 +25,16 @@ public class AltaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            List<String> tecnologias = leerTecnologias("/WEB-INF/datos/tecnologiaas.txt");
+            List<String> tecnologias = leerTecnologias("/WEB-INF/datos/tecnologias.txt");
             LOGGER.info(tecnologias.toString());
+
             request.setAttribute("tecnologias", tecnologias);
         } catch (IOException e) {
             LOGGER.severe(e.getMessage());
+
+            request.setAttribute("mensajeError", e.getMessage());
+            request.getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
+            return;
         }
         request.getRequestDispatcher("/WEB-INF/formulario.jsp").forward(request, response);
     }
@@ -43,8 +48,9 @@ public class AltaServlet extends HttpServlet {
         String tecnologia = request.getParameter("tecnologia");
         String nivel = request.getParameter("nivel");
 
-        if (nombre == null || nombre.isBlank() || email == null || email.isBlank()) {
-            response.sendRedirect(request.getContextPath() + "/alta");
+        if (nombre.isBlank()) {
+            request.setAttribute("mensajeError", "el nombre es obligatorio");
+            request.getRequestDispatcher("/formulario.jsp").forward(request, response);
             return;
         }
 
@@ -77,17 +83,22 @@ public class AltaServlet extends HttpServlet {
             throw new IOException("ruta nula");
         }
         List<String> lista = new ArrayList<>();
+        //gerResourceAsStream abre un flujo de bytes (InputStream)
         InputStream is = getServletContext().getResourceAsStream(pathFile);
 
         //En vez de propagar una IOException, implementar una exception propia de tipo checked llamada por ejemplo FicheroTxtNoEncontradoException
         if (is == null) {
             throw new IOException("no existe " + pathFile);
         }
+        //try con recursos: todo llo que se declara dentro del parentesis se cierra automaticamente con el metodo close()
+        //InputStream => bytes en crudo
+        //InputStreamReader => convierte esos bytes en caracteres en un charset
+        //BufferedREader => añade un buffer para leer linea a linea, me va a dar null cuando no haya mas
         try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 if (!linea.isBlank()) {
-                    lista.add(linea.trim());
+                    lista.add(linea.strip());
                 }
             }
         }

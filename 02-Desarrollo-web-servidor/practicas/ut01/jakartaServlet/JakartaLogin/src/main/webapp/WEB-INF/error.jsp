@@ -45,17 +45,17 @@
 </head>
 <body>
   <div class="card">
-    <div class="code">${requestScope['javax.servlet.error.status_code']}</div>
+    <div class="code">${requestScope['jakarta.servlet.error.status_code']}</div>
     <h1>Algo no ha ido bien</h1>
-    <p>${requestScope['javax.servlet.error.message']}</p>
+    <p>${requestScope['jakarta.servlet.error.message']}</p>
 
     <dl>
       <dt>Estado HTTP</dt>
-      <dd>${requestScope['javax.servlet.error.status_code']}</dd>
+      <dd>${requestScope['jakarta.servlet.error.status_code']}</dd>
       <dt>Origen</dt>
-      <dd>${requestScope['javax.servlet.error.request_uri']}</dd>
+      <dd>${requestScope['jakarta.servlet.error.request_uri']}</dd>
       <dt>Detalle</dt>
-      <dd>${requestScope['javax.servlet.error.exception'] != null ? requestScope['javax.servlet.error.exception'].class.name : 'Sin detalles adicionales'}</dd>
+      <dd>${requestScope['jakarta.servlet.error.exception_type'] != null ? requestScope['jakarta.servlet.error.exception_type'].simpleName : 'Sin detalles adicionales'}</dd>
     </dl>
 
     <a class="boton" href="${pageContext.request.contextPath}/">Volver al inicio</a>

@@ -24,9 +24,10 @@
 <body>
   <div class="form-card">
     <h1>Formulario de alta</h1>
-    <if:
     <form action="alta" method="post">
-
+    <% if (request.getAttribute("mensajeError") != null) {%>
+    <div class="error-msg">${mensajeError}</div>
+    <%}%>
       <label for="nombre">Nombre</label>
       <input type="text" id="nombre" name="nombre" required>
 
