@@ -41,9 +41,9 @@
 
       <label for="nivel">Tu nivel actual</label>
       <select id="nivel" name="nivel">
-      <c:forEach var="n" items="${niveles}">
-        <option value="${n}">${n}</option>
-        </c:forEach>
+        <c:forEach var="n" items="${niveles}">
+              <option value="${n}">${n}</option>
+            </c:forEach>
       </select>
 
       <button type="submit">Enviar</button>
