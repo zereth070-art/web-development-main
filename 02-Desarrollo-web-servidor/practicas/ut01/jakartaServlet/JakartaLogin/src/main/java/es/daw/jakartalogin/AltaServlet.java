@@ -1,14 +1,12 @@
 package es.daw.jakartalogin;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import es.daw.jakartalogin.exception.TxtNoEncontradoException;
+import es.daw.jakartalogin.util.FileUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -25,11 +23,15 @@ public class AltaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            List<String> tecnologias = leerTecnologias("/WEB-INF/datos/tecnologias.txt");
+            List<String> tecnologias = FileUtil.leerFichero(getServletContext(), "/WEB-INF/datos/tecnologias.txt");
             LOGGER.info(tecnologias.toString());
 
+            List<String> niveles = FileUtil.leerFichero(getServletContext(), "/WEB-INF/datos/niveles.txt");
+            LOGGER.info(niveles.toString());
+
             request.setAttribute("tecnologias", tecnologias);
-        } catch (IOException e) {
+            request.setAttribute("niveles", niveles);
+        } catch (TxtNoEncontradoException | IOException e) {
             LOGGER.severe(e.getMessage());
 
             request.setAttribute("mensajeError", e.getMessage());
@@ -50,6 +52,12 @@ public class AltaServlet extends HttpServlet {
 
         if (nombre == null || nombre.isBlank()) {
             request.setAttribute("mensajeError", "el nombre es obligatorio");
+            try {
+                request.setAttribute("tecnologias", FileUtil.leerFichero(getServletContext(), "/WEB-INF/datos/tecnologias.txt"));
+                request.setAttribute("niveles", FileUtil.leerFichero(getServletContext(), "/WEB-INF/datos/niveles.txt"));
+            } catch (TxtNoEncontradoException | IOException e) {
+                LOGGER.severe(e.getMessage());
+            }
             request.getRequestDispatcher("/WEB-INF/formulario.jsp").forward(request, response);
             return;
         }
@@ -71,37 +79,5 @@ public class AltaServlet extends HttpServlet {
                 .replace(">", "&gt;")
                 .replace("\"", "&quot;")
                 .replace("'", "&#39;");
-    }
-
-    /**
-     * 
-     * @return
-     * @throws IOException
-     */
-    private List<String> leerTecnologias(String pathFile) throws IOException {
-        if (pathFile == null) {
-            throw new IOException("ruta nula");
-        }
-        List<String> lista = new ArrayList<>();
-        //gerResourceAsStream abre un flujo de bytes (InputStream)
-        InputStream is = getServletContext().getResourceAsStream(pathFile);
-
-        //En vez de propagar una IOException, implementar una exception propia de tipo checked llamada por ejemplo FicheroTxtNoEncontradoException
-        if (is == null) {
-            throw new IOException("no existe " + pathFile);
-        }
-        //try con recursos: todo llo que se declara dentro del parentesis se cierra automaticamente con el metodo close()
-        //InputStream => bytes en crudo
-        //InputStreamReader => convierte esos bytes en caracteres en un charset
-        //BufferedREader => añade un buffer para leer linea a linea, me va a dar null cuando no haya mas
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                if (!linea.isBlank()) {
-                    lista.add(linea.strip());
-                }
-            }
-        }
-        return lista;
     }
 }
