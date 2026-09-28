@@ -460,4 +460,4 @@ export default NombreComponente         // lo hace reutilizable
 
 Cada vez que el navegador intenta hacer una peticion al servidor en react, react lo para y carga un componente con esa url en su lugar.
 
-
+https://reactrouter.com/api/hooks/useNavigate

@@ -1,14 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { RouterProvider, createBrowserRouter } from 'react-router'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-import LoginRegistro from './Componentes/zonaCliente/login/LoginRegistro.jsx'
-import Layout from './Componentes/ZonaTienda/Layout/Layout.jsx'
-import Home from './Componentes/ZonaTienda/Home/Home.jsx'
-import ProductosCat from './Componentes/ZonaTienda/Productos/ProductosCat.jsx'
-import NotFound from './Componentes/error/NotFound.jsx'
+import LoginRegistro from "./Componentes/zonaCliente/login/LoginRegistro.jsx";
+import Layout from "./Componentes/ZonaTienda/Layout/Layout.jsx";
+import Home from "./Componentes/ZonaTienda/Home/Home.jsx";
+import ProductosCat from "./Componentes/ZonaTienda/Productos/ProductosCat.jsx";
+import NotFound from "./Componentes/error/NotFound.jsx";
 
 // configuracion del modulo de enrutamiento react-router:
 // createBrowserRouter recibe un array de objetos ruta (path + element)
@@ -19,17 +19,17 @@ const routerObjects = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      { path: 'Productos', element: <ProductosCat /> },
+      { path: "Productos/categoria", element: <ProductosCat /> },
     ],
   },
   // ruta de login y registro de clientes
-  { path: '/Cliente/LoginRegistro', element: <LoginRegistro /> },
+  { path: "/Cliente/LoginRegistro", element: <LoginRegistro /> },
   // ruta comodin para paginas inexistentes (404)
-  { path: '*', element: <NotFound /> },
-])
+  { path: "*", element: <NotFound /> },
+]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={routerObjects} />
   </StrictMode>,
-)
+);
