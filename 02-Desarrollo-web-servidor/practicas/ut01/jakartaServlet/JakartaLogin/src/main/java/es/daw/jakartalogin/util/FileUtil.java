@@ -14,9 +14,6 @@ import jakarta.servlet.ServletContext;
 
 public class FileUtil {
 
-    private FileUtil() {
-    }
-
     public static List<String> leerFichero(ServletContext ctx, String pathFile) throws TxtNoEncontradoException, IOException {
         if (pathFile == null) {
             throw new IOException("ruta nula");

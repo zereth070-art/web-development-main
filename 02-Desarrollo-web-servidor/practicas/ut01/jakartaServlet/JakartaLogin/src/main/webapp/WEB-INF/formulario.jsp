@@ -23,26 +23,26 @@
   <div class="form-card">
     <h1>Formulario de alta</h1>
     <form action="alta" method="post">
-    <% if (request.getAttribute("mensajeError") != null) {%>
-    <div class="error-msg">${mensajeError}</div>
+    <% if (request.getAttribute("mensaje") != null) {%>
+    <div class="error-msg"><c:out value="${mensaje}"/></div>
     <%}%>
       <label for="nombre">Nombre</label>
-      <input type="text" id="nombre" name="nombre" required>
+      <input type="text" id="nombre" name="nombre" value="<c:out value='${nombre}'/>">
 
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" value="<c:out value='${email}'/>" required>
 
       <label for="tecnologia">Tecnología con la que más te gustaría trabajar</label>
       <select id="tecnologia" name="tecnologia">
-        <c:forEach var="t" items="${tecnologias}">
-              <option value="${t}">${t}</option>
+            <c:forEach var="t" items="${tecnologias}">
+              <option value="${t}" ${t == tecnologia ? 'selected' : ''}>${t}</option>
             </c:forEach>
       </select>
 
       <label for="nivel">Tu nivel actual</label>
-      <select id="nivel" name="nivel">
+      <select id="nivel" name="nivel" multiple>
         <c:forEach var="n" items="${niveles}">
-              <option value="${n}">${n}</option>
+              <option value="${n}" ${n == nivel ? 'selected' : ''}>${n}</option>
             </c:forEach>
       </select>
 

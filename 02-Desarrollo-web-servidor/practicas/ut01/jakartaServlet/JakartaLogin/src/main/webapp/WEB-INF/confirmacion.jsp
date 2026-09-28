@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,15 +20,15 @@
 <body>
   <div class="card">
     <div class="ok">&#10003;</div>
-    <h1>¡Te has dado de alta correctamente, ${nombre}!</h1>
+    <h1>¡Te has dado de alta correctamente, <c:out value="${nombre}"/>!</h1>
 
     <dl>
-      <dt>Email</dt><dd>${email}</dd>
-      <dt>Tecnología</dt><dd>${tecnologia}</dd>
-      <dt>Nivel</dt><dd>${nivel}</dd>
+      <dt>Email</dt><dd><c:out value="${email}"/></dd>
+      <dt>Tecnología</dt><dd><c:out value="${tecnologia}"/></dd>
+      <dt>Nivel</dt><dd><c:out value="${nivel}"/></dd>
     </dl>
 
-    <a href="index.jsp">&larr; Volver al inicio</a>
+    <a href="${pageContext.request.contextPath}/">&larr; Volver al inicio</a>
   </div>
 </body>
 </html>
