@@ -1,5 +1,6 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ page import="java.util.List" %>
+<%@ taglib uri="jakarta.tags.functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,24 +29,21 @@
     <%}%>
       <label for="nombre">Nombre</label>
       <input type="text" id="nombre" name="nombre" value="<c:out value='${nombre}'/>">
-
       <label for="email">Email</label>
       <input type="email" id="email" name="email" value="<c:out value='${email}'/>" required>
-
-      <label for="tecnologia">Tecnología con la que más te gustaría trabajar</label>
+      <label for="tecnologia">Tecnologia con la que mas te gustaria trabajar</label>
       <select id="tecnologia" name="tecnologia">
             <c:forEach var="t" items="${tecnologias}">
               <option value="${t}" ${t == tecnologia ? 'selected' : ''}>${t}</option>
             </c:forEach>
       </select>
-
       <label for="nivel">Tu nivel actual</label>
       <select id="nivel" name="nivel" multiple>
-        <c:forEach var="n" items="${niveles}">
-              <option value="${n}" ${n == nivel ? 'selected' : ''}>${n}</option>
-            </c:forEach>
+        <c:set var="nivelesSeleccionados" value="${fn:join(nivelesSeleccionados, ',')}"/>
+        <option value="Principiante" ${fn:contains(nivelesSeleccionados, 'Principiante') ? 'selected': ''}>Principiante</option>
+        <option value="Intermedio" ${fn:contains(nivelesSeleccionados, 'Intermedio') ? 'selected': ''}>Intermedio</option>
+        <option value="Avanzado" ${fn:contains(nivelesSeleccionados, 'Avanzado') ? 'selected': ''}>Avanzado</option>
       </select>
-
       <button type="submit">Enviar</button>
     </form>
   </div>

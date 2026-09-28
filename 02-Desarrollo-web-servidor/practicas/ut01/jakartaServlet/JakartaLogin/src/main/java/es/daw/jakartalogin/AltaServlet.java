@@ -1,6 +1,7 @@
 package es.daw.jakartalogin;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -60,7 +61,8 @@ public class AltaServlet extends HttpServlet {
             request.setAttribute("mensaje", "El nombre es obligatorio");
             request.setAttribute("email", email);
             request.setAttribute("tecnologia", tecnologia);
-            request.setAttribute("nivel", nivel);
+            request.setAttribute("niveles", niveles);
+            request.setAttribute("nivelesSeleccionados", request.getParameterValues("nivel"));
             request.getRequestDispatcher("/WEB-INF/formulario.jsp").forward(request, response);
             return;
         }
@@ -68,7 +70,7 @@ public class AltaServlet extends HttpServlet {
         request.setAttribute("nombre", nombre.trim());
         request.setAttribute("email", email.trim());
         request.setAttribute("tecnologia", tecnologia);
-        request.setAttribute("nivel", nivel);
+        request.setAttribute("niveles", Arrays.toString(niveles.toArray()));
 
         request.getRequestDispatcher("/WEB-INF/confirmacion.jsp").forward(request, response);
     }

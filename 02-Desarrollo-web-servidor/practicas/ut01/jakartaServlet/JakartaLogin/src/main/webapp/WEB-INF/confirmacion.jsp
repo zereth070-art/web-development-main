@@ -25,7 +25,7 @@
     <dl>
       <dt>Email</dt><dd><c:out value="${email}"/></dd>
       <dt>Tecnología</dt><dd><c:out value="${tecnologia}"/></dd>
-      <dt>Nivel</dt><dd><c:out value="${nivel}"/></dd>
+      <dt>Niveles</dt><dd><c:out value="${niveles}"/></dd>
     </dl>
 
     <a href="${pageContext.request.contextPath}/">&larr; Volver al inicio</a>
