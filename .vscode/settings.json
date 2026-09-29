@@ -161,5 +161,14 @@
   // ---------- ACCESSIBILITY ----------
 
   "editor.accessibilitySupport": "auto",
-  "java.configuration.updateBuildConfiguration": "interactive"
+
+  // ---------- JAVA ----------
+
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-25",
+      "default": true
+    }
+  ]
 }
