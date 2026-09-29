@@ -1,7 +1,6 @@
 package es.daw.jakartalogin;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -30,6 +29,7 @@ public class AltaServlet extends HttpServlet {
         } catch (TxtNoEncontradoException | IOException e) {
             throw new ServletException("no se pudieron cargar los datos", e);
         }
+
         LOGGER.info(tecnologias.toString());
         LOGGER.info(niveles.toString());
     }
@@ -54,15 +54,14 @@ public class AltaServlet extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String email = request.getParameter("email");
         String tecnologia = request.getParameter("tecnologia");
-        String nivel = request.getParameter("nivel");
+        String[] nivelesSeleccionados = request.getParameterValues("nivel");
 
         if (nombre == null || nombre.isBlank()) {
             setListas(request);
             request.setAttribute("mensaje", "El nombre es obligatorio");
             request.setAttribute("email", email);
             request.setAttribute("tecnologia", tecnologia);
-            request.setAttribute("niveles", niveles);
-            request.setAttribute("nivelesSeleccionados", request.getParameterValues("nivel"));
+            request.setAttribute("nivelesSeleccionados", nivelesSeleccionados);
             request.getRequestDispatcher("/WEB-INF/formulario.jsp").forward(request, response);
             return;
         }
@@ -70,7 +69,7 @@ public class AltaServlet extends HttpServlet {
         request.setAttribute("nombre", nombre.trim());
         request.setAttribute("email", email.trim());
         request.setAttribute("tecnologia", tecnologia);
-        request.setAttribute("niveles", Arrays.toString(niveles.toArray()));
+        request.setAttribute("niveles", nivelesSeleccionados != null ? String.join(", ", nivelesSeleccionados) : "");
 
         request.getRequestDispatcher("/WEB-INF/confirmacion.jsp").forward(request, response);
     }

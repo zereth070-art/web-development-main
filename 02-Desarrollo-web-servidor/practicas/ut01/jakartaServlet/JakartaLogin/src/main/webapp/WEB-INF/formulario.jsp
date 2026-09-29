@@ -1,5 +1,4 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ page import="java.util.List" %>
 <%@ taglib uri="jakarta.tags.functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,7 +15,7 @@
   button { margin-top: 24px; background: #E8432A; color: #fff; border: none; padding: 12px 28px;
            border-radius: 8px; font-weight: bold; cursor: pointer; }
   button:hover { background: #c93a22; }
-  .error-msg { background: #FDE8E8; color: #A00; border: 1px solid #E86IUR;
+  .error-msg { background: #FDE8E8; color: #A00; border: 1px solid #E86E6E;
                border-radius: 6px; padding: 10px 14px; margin-top: 16px; font-weight: bold; }
 </style>
 </head>
@@ -24,9 +23,9 @@
   <div class="form-card">
     <h1>Formulario de alta</h1>
     <form action="alta" method="post">
-    <% if (request.getAttribute("mensaje") != null) {%>
-    <div class="error-msg"><c:out value="${mensaje}"/></div>
-    <%}%>
+    <c:if test="${not empty mensaje}">
+      <div class="error-msg"><c:out value="${mensaje}"/></div>
+    </c:if>
       <label for="nombre">Nombre</label>
       <input type="text" id="nombre" name="nombre" value="<c:out value='${nombre}'/>">
       <label for="email">Email</label>
@@ -39,10 +38,10 @@
       </select>
       <label for="nivel">Tu nivel actual</label>
       <select id="nivel" name="nivel" multiple>
-        <c:set var="nivelesSeleccionados" value="${fn:join(nivelesSeleccionados, ',')}"/>
-        <option value="Principiante" ${fn:contains(nivelesSeleccionados, 'Principiante') ? 'selected': ''}>Principiante</option>
-        <option value="Intermedio" ${fn:contains(nivelesSeleccionados, 'Intermedio') ? 'selected': ''}>Intermedio</option>
-        <option value="Avanzado" ${fn:contains(nivelesSeleccionados, 'Avanzado') ? 'selected': ''}>Avanzado</option>
+        <c:set var="nivelesSeleccionadosCsv" value="${fn:join(nivelesSeleccionados, ',')}"/>
+        <c:forEach var="n" items="${niveles}">
+          <option value="${n}" ${fn:contains(nivelesSeleccionadosCsv, n) ? 'selected' : ''}>${n}</option>
+        </c:forEach>
       </select>
       <button type="submit">Enviar</button>
     </form>
