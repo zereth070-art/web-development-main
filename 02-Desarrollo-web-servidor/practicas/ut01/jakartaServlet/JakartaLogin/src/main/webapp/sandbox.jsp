@@ -6,7 +6,7 @@ taglib uri="jakarta.tags.functions" prefix="fn" %> <%-- solo la version JSTL
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title></title>
+    <title><select name="titulo"></select></title>
   </head>
   <body>
     <h1>Repintado del select multiple</h1>
