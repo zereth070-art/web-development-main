@@ -28,7 +28,7 @@ levanta solo con `./mvnw spring-boot:run` → `http://localhost:8080`.
 
 ## Requisitos
 
-- **JDK 17+**. Los dos proyectos servlet compilan con `maven.compiler.release=17`.
+- **JDK 25**. Todos los proyectos compilan con `maven.compiler.release=25` / `java.version=25`.
 - **Apache Tomcat 10.1+** para los WAR. No está en el repo: descárgalo de
   [tomcat.apache.org](https://tomcat.apache.org/).
   - Con Tomcat **10.1** (Servlet 6.0), el `web.xml` debe decir `version="6.0"`.

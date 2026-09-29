@@ -1,6 +1,6 @@
 # TimerService — Guía detallada
 
-*PomodoroZion · Spring Boot · Java 17*
+*PomodoroZion · Spring Boot · Java 25*
 
 ## 0. El modelo mental (léelo antes que nada)
 

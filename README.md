@@ -23,7 +23,7 @@ Directorio de estudio para aprender Desarrollo de Aplicaciones Web de forma orde
 ## Requisitos
 
 - **Node.js 20+** e `npm` para los proyectos frontend (React/Vite).
-- **JDK 17+** para las prácticas de servidor; `10-Proyectos/pomodorozion` usa **JDK 25** (`java.version=25` en su `pom.xml`).
+- **JDK 25** para todo el repositorio (las prácticas de servidor y `10-Proyectos/pomodorozion` compilan con `release=25` / `java.version=25`).
 - **Apache Tomcat 11** no está incluido en el repo: descárgalo en [tomcat.apache.org](https://tomcat.apache.org/) si vas a desplegar los WAR de servlets.
 - Maven no hace falta instalarlo: los proyectos tienen wrapper (`mvnw` en Linux/macOS, `mvnw.cmd` en Windows). En Windows conviene tener `JAVA_HOME` apuntando al JDK.
 

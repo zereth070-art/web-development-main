@@ -22,7 +22,7 @@ Navegador ──HTTP──> Tomcat embebido (Spring Boot) ──JPA──> H2/Po
 | --- | --- | --- |
 | **Git / GitHub** | Control de versiones + remoto | Subir avances, trabajar en ramas, `.gitignore` |
 | **Maven** | Build + dependencias | `pom.xml`, `mvnw`, ciclo `clean test package` |
-| **Java 17+** | Lenguaje del servidor | `.java` en `src/main/java` |
+| **Java 25+** | Lenguaje del servidor | `.java` en `src/main/java` |
 | **Spring Boot** | Framework web + seguridad + datos | Starters (`webmvc`, `security`, `data-jpa`) |
 | **JUnit** | Pruebas | `src/test/java`, `mvnw test` |
 
