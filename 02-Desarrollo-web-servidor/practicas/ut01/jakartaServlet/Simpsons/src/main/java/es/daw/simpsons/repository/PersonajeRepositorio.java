@@ -10,11 +10,11 @@ import java.util.List;
  *
  * Las edades son aproximadas (en la serie los personajes no envejecen).
  */
-public class PersonajeRepository {
+public class PersonajeRepositorio {
 
     // List.of() crea una lista INMUTABLE: si alguien intenta hacer add() o remove(),
     // salta una excepción. Así demostramos que los streams no tocan la lista original.
-    private static final List<Personaje> PersonajeRepository = List.of(
+    private static final List<Personaje> PERSONAJES = List.of(
             new Personaje("Homer",    "Simpson",    39, "Inspector de seguridad", "Central Nuclear",   true),
             new Personaje("Marge",    "Simpson",    36, "Ama de casa",            "Casa Simpson",      true),
             new Personaje("Bart",     "Simpson",    10, "Estudiante",             "Escuela Primaria",  true),
@@ -47,4 +47,7 @@ public class PersonajeRepository {
             new Personaje("Willie",   "",           50, "Conserje",               "Escuela Primaria",  false)
     );
 
+    public List<Personaje> findAll() {
+        return PERSONAJES;
+    }
 }

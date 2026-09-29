@@ -54,7 +54,7 @@
     <a href="${pageContext.request.contextPath}/personajes">Limpiar filtros</a>
 </form>
 
-<p class="resumen"><strong>XXXXXXX</strong> personajes encontrados</p>
+<p class="resumen"><strong> ${personajes.size()}</strong> personajes encontrados</p>
 
     <table>
         <thead>
@@ -66,11 +66,13 @@
         </tr>
         </thead>
         <tbody>
+        <c:forEach var="p" items="${personajes}">
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>${p.nombre()}</td>
+                <td>${p.edad()}</td>
+                <td>${p.ocupacion()}</td>
+                <td>${p.lugar()}</td>
+                <td>${p.principal()}</td>
             </tr>
         </c:forEach>
         </tbody>
