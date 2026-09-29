@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Variables de entorno: nunca suben al repo (contienen JWT_SECRET)
+.env
+.env.local
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
