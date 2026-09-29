@@ -1,0 +1,24 @@
+valores variables en una url:
+    htt(s):nobre_servidor/segmento-1/segmento-2/...
+                        ---------------------------
+                            estos segmentos pueden ser fijos o variables, si son variables tu puedes almacenar ahi un valor
+
+ej: ver producto de una categoria:
+    url ----> .../Productos/Categoria/:nombreCat
+            -------------------------------------
+                seg fijos               seg.variables en funcion de la categoria clickee en la lista de categorias del header
+                useParams() me permite acceder al contenido de estos segmentos variables
+
+2º) cuando el numero de valores variables q quieres pasara en la url pasa de 3, conviene mejor q usar segmentos uasr querystering
+
+<--------------------------- en js toooooodo esto es un objeto URL ------------------------------>
+<------origin -------------------><--------------- urlSearchParams (objeto js urlSearchParams) ------->
+
+
+  http(s)://nombre_servidor/segmento-1/segmento-2 ?  variable=valor & variable=valor & variable=valor & ....
+						  -----------------------------------------------------------
+									\.--> queryString, el delimitador "?" marca el inicio de la zona variable
+							a continuación aparece una sucesión variable=valor (como si fuera un Map o diccionario
+							clave valor)
+								||
+							useSearchParams() me permite acceder al contenido de este objeto
