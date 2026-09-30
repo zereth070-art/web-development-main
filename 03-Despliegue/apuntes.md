@@ -131,3 +131,45 @@ Cuando una credencial se expone, se debe rotar:
 
 # APACHE2
 si no tenemos enlace directo a norma, la norma no funciona
+# Chuleta: Crear usuarios en Apache2
+
+## 1. Crear usuario del sistema
+```bash
+sudo adduser --system --no-create-home usuariosy3
+```
+
+## 2. Añadir al archivo de autenticación de Apache
+```bash
+sudo htpasswd /etc/apache2/.passwords/.prueba.com usuariosy3
+```
+
+## 3. Verificar el contenido del archivo
+```bash
+sudo cat /etc/apache2/.passwords/.prueba.com
+```
+
+## 4. Relanzar Apache
+```bash
+sudo systemctl restart apache2
+```
+
+## 5. Probar acceso
+Visita `http://prueba.com/usuarios2y3` y autentica con el usuario y contraseña.
+
+---
+
+## Resumen rápido
+
+| Paso | Comando |
+|------|---------|
+| Crear usuario sistema | `sudo adduser --system --no-create-home USUARIO` |
+| Añadir a .htpasswd | `sudo htpasswd /etc/apache2/.passwords/.prueba.com USUARIO` |
+| Verificar | `sudo cat /etc/apache2/.passwords/.prueba.com` |
+| Relanzar Apache | `sudo systemctl restart apache2` |
+
+---
+
+## Notas importantes
+- **No hace falta reiniciar Apache** al renombrar archivos (ej: `index.hmtl` → `index.html`)
+- **Sí hay que reiniciar** al modificar archivos de autenticación o configuración
+- El archivo de autenticación puede estar en `/etc/apache2/.htpasswd` o `/etc/apache2/.passwords/.prueba.com` según tu configuración
