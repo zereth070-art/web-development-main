@@ -62,3 +62,4 @@ Copia el `*.war` de `target/` a `webapps/` de tu Tomcat o despliégalo con Intel
 Terminar con una base sólida para crear, probar, desplegar y mantener aplicaciones web completas.
 
 # proxy inverso investigar
+https://urianviera.com/nodejs/que-son-las-cors-en-nodejs
