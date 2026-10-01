@@ -19,19 +19,28 @@ public class PersonajesServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html");
     String lugar = request.getParameter("lugar");
-    int edadMax = Integer.parseInt(request.getParameter("edadMax"));
+    Integer edadMax = entero(request.getParameter("edadMax"));
     String ordenadoPor = request.getParameter("ordenadoPor");
-    boolean descendente = request.getParameter("descendente")!= null ? Boolean.parseBoolean(request.getParameter("descendente")) : false;
+    boolean descendente = request.getParameter("descendente") != null && Boolean.parseBoolean(request.getParameter("descendente"));
     String limite =  request.getParameter("limite");
 
     PersonajeServicio servicio = new PersonajeServicio();
     List<Personaje> personajes = servicio.buscar();
-    //NECESITO OBTENER TOA LA LISTA DE LOS SIMPOSNS
 
-        request.getRequestDispatcher("/formulario").forward(request,response);
+    request.setAttribute("personajes", personajes);
+    request.setAttribute("lugares", personajes.stream().map(Personaje::lugar).distinct().sorted().toList());
 
+    request.getRequestDispatcher("/WEB-INF/personajes.jsp").forward(request,response);
+
+    }
+
+    private Integer entero(String valor) {
+        try {
+            return Integer.valueOf(valor);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     public void destroy() {

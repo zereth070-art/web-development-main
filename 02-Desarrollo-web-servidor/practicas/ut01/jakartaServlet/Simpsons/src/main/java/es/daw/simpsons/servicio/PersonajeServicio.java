@@ -8,6 +8,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PersonajeServicio  {
@@ -16,4 +19,22 @@ public class PersonajeServicio  {
    public List<Personaje> buscar(){
        return repository.findAll();
    }
+
+    public List<Personaje> buscarPorLugar(String lugar){
+
+
+        return  repository
+                .findAll()
+                .stream()
+                .filter(personaje -> personaje.lugar().equals(lugar))
+                .toList();
+    }
+
+    public List<Personaje> buscarPorNombre(String nombre) {
+        return repository
+                .findAll()
+                .stream()
+                .filter(personaje -> personaje.nombre().equals(nombre))
+                .toList();
+    }
 }
