@@ -60,3 +60,5 @@ Copia el `*.war` de `target/` a `webapps/` de tu Tomcat o despliégalo con Intel
 ## Objetivo final
 
 Terminar con una base sólida para crear, probar, desplegar y mantener aplicaciones web completas.
+
+# proxy inverso investigar
