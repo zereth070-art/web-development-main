@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 function OffCanvasCats() {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
-  useEffect(); /*<------ hook useEffect() es una funcion js que admite como parametros
+  /* useEffect(); <------ hook useEffect() es una funcion js que admite como parametros
                         -una funcion que se a a ejecutar siempre y cuando
                         se cambia el valor de la variable de alguna de las variables
                         que se definen com dependencias de efecto
@@ -17,7 +17,8 @@ function OffCanvasCats() {
                         */
 
   useEffect(() => {
-    console.log;
+    if (categoriaSeleccionada === "") return;
+    console.log("categoria seleccionada:", categoriaSeleccionada);
     window.alert("has seleccionado la categoria " + categoriaSeleccionada);
   }, [categoriaSeleccionada]);
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function OffCanvasCats() {
   return (
     <div className="mt-5 mb-4">
       <button
-        className="btn btn-otuline-secondary"
+        className="btn btn-outline-secondary"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasWithBothOptions"
@@ -59,13 +60,14 @@ function OffCanvasCats() {
             <strong>Categorias</strong>
           </h3>
           <p>....cargar categorias principales invocando a servicio....</p>
-          <div class="list-group">
+          <div className="list-group">
             <button
               type="button"
               className="list-group-item list-group-item-action"
-              onClick={() =>
-                navigate("/Productos/Categoria?categoria=Componentes")
-              }
+              onClick={() => {
+                navigate("/Productos/Categoria?categoria=Componentes");
+                setCategoriaSeleccionada("componentes");
+              }}
             >
               Componentes
             </button>
