@@ -1,7 +1,6 @@
 package es.daw.simpsons.controller;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 import es.daw.simpsons.model.Personaje;
@@ -21,12 +20,12 @@ public class PersonajesServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
     String lugar = request.getParameter("lugar");
     Integer edadMax = entero(request.getParameter("edadMax"));
-    String ordenadoPor = request.getParameter("ordenadoPor");
-    boolean descendente = request.getParameter("descendente") != null && Boolean.parseBoolean(request.getParameter("descendente"));
-    String limite =  request.getParameter("limite");
+    String ordenadoPor = request.getParameter("ordenarPor");
+    boolean descendente = request.getParameter("descendente") != null;
+    Integer limite =  entero(request.getParameter("limite"));
 
     PersonajeServicio servicio = new PersonajeServicio();
-    List<Personaje> personajes = servicio.buscar();
+    List<Personaje> personajes = servicio.buscar(lugar, edadMax, ordenadoPor, descendente, limite);
 
     request.setAttribute("personajes", personajes);
     request.setAttribute("lugares", personajes.stream().map(Personaje::lugar).distinct().sorted().toList());

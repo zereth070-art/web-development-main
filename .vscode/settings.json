@@ -170,5 +170,6 @@
       "name": "JavaSE-25",
       "default": true
     }
-  ]
+  ],
+  "java.compile.nullAnalysis.mode": "automatic"
 }

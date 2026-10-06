@@ -25,7 +25,7 @@
         </label>
 
         <label>Edad máxima
-            <input type="number" name="edadMax" min="0" value="">
+            <input type="number" name="edadMax" min="0" value="${param.edadMax}">
         </label>
     </fieldset>
 
@@ -34,19 +34,19 @@
 
         <label>Ordenar por
             <select name="ordenarPor">
-                <option value="nombre">Nombre</option>
-                <option value="apellido">Apellido</option>
-                <option value="edad">Edad</option>
+                <option value="nombre" ${param.ordenarPor == 'nombre' ? 'selected' : ''}>Nombre</option>
+                <option value="apellido" ${param.ordenarPor == 'apellido' ? 'selected' : ''}>Apellido</option>
+                <option value="edad" ${param.ordenarPor == 'edad' ? 'selected' : ''}>Edad</option>
             </select>
         </label>
 
         <label class="check">
-            <input type="checkbox" name="descendente" >
+            <input type="checkbox" name="descendente" ${!empty param.descendente ? 'checked' : ''}>
             Descendente
         </label>
 
         <label>Mostrar como máximo
-            <input type="number" name="limite" min="0" value="">
+            <input type="number" name="limite" min="0" value="${param.limite}">
         </label>
     </fieldset>
 
