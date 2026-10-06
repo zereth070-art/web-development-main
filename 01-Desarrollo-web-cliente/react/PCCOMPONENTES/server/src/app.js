@@ -1,4 +1,5 @@
 import express from "express";
+import { routerAuth } from "./routes/auth.js";
 import { routerCategorias } from "./routes/categorias.js";
 
 /*
@@ -23,6 +24,7 @@ export function crearApp() {
   });
 
   // rutas de la API
+  app.use(routerAuth);
   app.use(routerCategorias);
 
   // 404 en JSON para rutas que no existen (tiene que ir DESPUÉS de las rutas)
@@ -37,8 +39,20 @@ export function crearApp() {
   // un middleware normal: sin él, Express lo ignora.
   app.use((err, req, res, _next) => {
     console.error("[api] error:", err);
+
+    // 11000 = índice único violado en Mongo. Llegó hasta la base, o sea que
+    // la garantía funcionó. Es un conflicto con lo que ya hay (409), no un
+    // fallo nuestro (500). Este camino cubre la carrera entre dos registros
+    // simultáneos, que el chequeo previo de auth.js no puede ganar.
+    if (err?.code === 11000) {
+      const campo = Object.keys(err.keyPattern ?? {})[0] ?? "campo";
+      return res.status(409).json({
+        error: { codigo: "DUPLICADO", mensaje: `Ya existe un registro con ese ${campo}.` },
+      });
+    }
+
     const status = err.status ?? 500;
-    res.status(status).json({
+    return res.status(status).json({
       error: {
         codigo: err.codigo ?? "ERROR_INTERNO",
         // al cliente nunca se le manda el stack trace: es un mapa de tu
