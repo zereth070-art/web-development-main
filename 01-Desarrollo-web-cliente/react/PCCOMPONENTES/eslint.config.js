@@ -18,4 +18,16 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  // el backend corre en Node, no en el navegador: globals de Node y
+  // _prefijo para argumentos obligatorios pero no usados (el 4º argumento
+  // del middleware de errores es la firma que busca Express)
+  {
+    files: ['server/**/*.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+    rules: {
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    },
+  },
 ])
