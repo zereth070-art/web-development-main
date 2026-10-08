@@ -16,3 +16,5 @@ apache-tomcat-*/
 # Node
 node_modules/
 dist/
+# Secretos (nunca subir)
+.env
