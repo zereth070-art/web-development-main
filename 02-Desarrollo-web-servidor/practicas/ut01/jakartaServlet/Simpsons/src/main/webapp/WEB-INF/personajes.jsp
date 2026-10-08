@@ -27,6 +27,7 @@
         <label>Edad máxima
             <input type="number" name="edadMax" min="0" value="${param.edadMax}">
         </label>
+
     </fieldset>
 
     <fieldset>
@@ -37,6 +38,9 @@
                 <option value="nombre" ${param.ordenarPor == 'nombre' ? 'selected' : ''}>Nombre</option>
                 <option value="apellido" ${param.ordenarPor == 'apellido' ? 'selected' : ''}>Apellido</option>
                 <option value="edad" ${param.ordenarPor == 'edad' ? 'selected' : ''}>Edad</option>
+                 <option value="ocupacion" ${param.ordenarPor == 'ocupacion' ? 'selected' : ''}>Ocupación</option>
+                 <option value="lugar" ${param.ordenarPor == 'lugar' ? 'selected' : ''}>lugar</option>
+
             </select>
         </label>
 

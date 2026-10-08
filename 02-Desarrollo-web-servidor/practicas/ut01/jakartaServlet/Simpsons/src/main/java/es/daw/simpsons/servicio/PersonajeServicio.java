@@ -18,7 +18,7 @@ public class PersonajeServicio  {
      * Búsqueda con filtros, orden y límite. Todos los parámetros son opcionales:
      * null (o vacío en el caso de lugar/ordenarPor) significa "no aplicar".
      */
-    public List<Personaje> buscar(String lugar, Integer edadMax, String ordenarPor,
+    public List<Personaje> buscar(String lugar, Integer edadMax, String ordenarPor, String ocupacion,
                                  boolean descendente, Integer limite) {
 
         Stream<Personaje> stream = repository.findAll().stream();
@@ -32,9 +32,12 @@ public class PersonajeServicio  {
         }
 
         Comparator<Personaje> comparador = switch (ordenarPor == null ? "" : ordenarPor) {
+            case "nombre" -> Comparator.comparing(Personaje::nombre,String::compareToIgnoreCase);
             case "apellido" -> Comparator.comparing(Personaje::apellido, String.CASE_INSENSITIVE_ORDER);
             case "edad"     -> Comparator.comparingInt(Personaje::edad)
                                 .thenComparing(Personaje::nombre, String.CASE_INSENSITIVE_ORDER);
+            case "ocupacion" -> Comparator.comparing(Personaje::ocupacion, String.CASE_INSENSITIVE_ORDER);
+            case "lugar"    -> Comparator.comparing(Personaje::lugar, String::compareToIgnoreCase).thenComparing(Personaje::nombre, String.CASE_INSENSITIVE_ORDER);
             default         -> Comparator.comparing(Personaje::nombre, String.CASE_INSENSITIVE_ORDER);
         };
 

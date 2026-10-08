@@ -21,11 +21,12 @@ public class PersonajesServlet extends HttpServlet {
     String lugar = request.getParameter("lugar");
     Integer edadMax = entero(request.getParameter("edadMax"));
     String ordenadoPor = request.getParameter("ordenarPor");
+    String ocupacion = request.getParameter("ocupacion");
     boolean descendente = request.getParameter("descendente") != null;
     Integer limite =  entero(request.getParameter("limite"));
 
     PersonajeServicio servicio = new PersonajeServicio();
-    List<Personaje> personajes = servicio.buscar(lugar, edadMax, ordenadoPor, descendente, limite);
+    List<Personaje> personajes = servicio.buscar(lugar, edadMax, ordenadoPor, ocupacion, descendente, limite);
 
     request.setAttribute("personajes", personajes);
     request.setAttribute("lugares", personajes.stream().map(Personaje::lugar).distinct().sorted().toList());
