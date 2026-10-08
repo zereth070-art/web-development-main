@@ -1,7 +1,7 @@
 import "dotenv/config";
+import mongoose from "mongoose";
 import { crearApp } from "./app.js";
 import { conectarDB } from "./config/db.js";
-import { Categoria } from "./models/Categoria.js";
 
 const PORT = process.env.PORT ?? 3000;
 const MONGO_URI = process.env.MONGO_URI ?? "mongodb://localhost:27017/pccomponentes";
@@ -13,8 +13,10 @@ try {
   await conectarDB(MONGO_URI);
 
   // 2. sincronizar índices a propósito: unique: true declara la intención,
-  //    esto construye el índice de verdad (también con autoIndex off)
-  await Categoria.syncIndexes();
+  //    esto construye el índice de verdad (también con autoIndex off).
+  //    syncIndexes() sin argumentos recorre TODOS los modelos registrados:
+  //    si mañana añades un modelo, no hay que acordarte de esto.
+  await mongoose.syncIndexes();
 
   // 3. ya sí: escuchar peticiones
   crearApp().listen(PORT, () => {
