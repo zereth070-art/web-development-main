@@ -63,3 +63,4 @@ Terminar con una base sólida para crear, probar, desplegar y mantener aplicacio
 
 # proxy inverso investigar
 https://urianviera.com/nodejs/que-son-las-cors-en-nodejs
+mongodb+srv://zereth070_db_user:<db_password>@cluster0.nx9mb9p.mongodb.net/
